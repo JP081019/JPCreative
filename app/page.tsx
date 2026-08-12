@@ -34,10 +34,27 @@ const processSteps = [
 ];
 
 const projects = [
-  { name: "Nox", category: "Loja de roupas", tone: "tone-a" },
-  { name: "Vértice Premium Store", category: "Loja premium", tone: "tone-b" },
-  { name: "Vale Encantado", category: "Cabana / Hospedagem", tone: "tone-c" },
-  { name: "Refúgio Serra Azul", category: "Cabana / Experiência", tone: "tone-d" },
+  {
+    name: "Ana Dias Reflexoterapia",
+    category: "Saúde integrativa",
+    url: "https://www.anadiasreflexoterapia.com.br/",
+    image: "/project-ana-dias-reflexoterapia.png",
+    tone: "tone-a",
+  },
+  {
+    name: "Cabanas do Rio",
+    category: "Hospedagem / Experiência",
+    url: "https://cabanas-do-rio.vercel.app/",
+    image: "/project-cabanas-do-rio.png",
+    tone: "tone-c",
+  },
+  {
+    name: "Injoy",
+    category: "Marca / Experiência digital",
+    url: "https://injoy-tau.vercel.app/",
+    image: "/project-injoy.png",
+    tone: "tone-b",
+  },
 ];
 
 const benefits = [
@@ -324,14 +341,14 @@ export default function Home() {
             {projects.map((project) => (
               <article className="project-card" key={project.name}>
                 <div className={`project-media ${project.tone}`}>
-                  <video autoPlay loop muted playsInline preload="metadata" aria-hidden="true">
-                    <source src="/hero.mp4" type="video/mp4" />
-                  </video>
+                  <img src={project.image} alt={`Capa do projeto ${project.name}`} />
                 </div>
                 <div className="project-info">
                   <h3>{project.name}</h3>
                   <p>{project.category}</p>
-                  <a href="#contato">Ver projeto <Arrow /></a>
+                  <a href={project.url} target="_blank" rel="noreferrer">
+                    Ver projeto <Arrow />
+                  </a>
                 </div>
               </article>
             ))}
