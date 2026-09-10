@@ -286,13 +286,6 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-social" aria-label="Redes sociais">
-          <a href="https://instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">◎</a>
-          <a href="https://wa.me/5548996656319" target="_blank" rel="noreferrer" aria-label="WhatsApp">◌</a>
-          <a href="mailto:joao081019pedrodasilv@gmail.com" aria-label="E-mail">✉</a>
-          <span aria-hidden="true" />
-        </div>
-
         <a className="scroll-indicator" href="#processo" aria-label="Ir para processo">
           <span />
           <small>Role para explorar</small>
