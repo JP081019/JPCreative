@@ -29,7 +29,7 @@ export function InfiniteSlider({ brands }: { brands: SliderBrand[] }) {
         );
 
         return brand.url ? (
-          <a key={brand.name} href={brand.url} target="_blank" rel="noopener noreferrer" aria-label={`Visitar site de ${brand.name}`}>
+          <a key={brand.name} href={brand.url} target="_blank" rel="noopener noreferrer" aria-label={`Visitar site de ${brand.name}`} tabIndex={hidden ? -1 : undefined}>
             {content}
           </a>
         ) : (
@@ -40,7 +40,7 @@ export function InfiniteSlider({ brands }: { brands: SliderBrand[] }) {
   );
 
   return (
-    <div className="infinite-slider" onMouseEnter={() => setSpeed(0.32)} onMouseLeave={() => setSpeed(1)}>
+    <div className="infinite-slider" onMouseEnter={() => setSpeed(0.32)} onMouseLeave={() => setSpeed(1)} onFocusCapture={() => setSpeed(0.32)} onBlurCapture={() => setSpeed(1)}>
       <div className="brand-track" ref={trackRef}>{group()}{group(true)}</div>
     </div>
   );
