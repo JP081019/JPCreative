@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JP Creative
 
-## Getting Started
+Website institucional em Next.js 16, React 19 e TypeScript, implementado a partir do briefing mestre de outubro de 2026.
 
-First, run the development server:
+## Visualização local
 
-```bash
+```sh
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abra [localhost:3000](http://localhost:3000). Para verificar a versão de produção:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Verificações
 
-## Learn More
+```sh
+npm run lint
+npm run build
+npm run test:e2e
+```
 
-To learn more about Next.js, take a look at the following resources:
+O build inclui TypeScript. O teste de navegador exige um servidor iniciado, Playwright e Chrome/Edge ou o navegador do Playwright. No Codex, o script pode reutilizar o runtime de navegador disponível. Fora dele, disponibilize Playwright no ambiente de desenvolvimento. `TEST_BASE_URL`, `PLAYWRIGHT_MODULE` e `BROWSER_EXECUTABLE` permitem configurar o teste. Os resultados e capturas são salvos em `.qa/`, ignorado pelo Git.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Conteúdo e estrutura
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `app/data/site.ts`: canais de contato, navegação, serviços e processo.
+- `app/data/projects.ts`: quatro cases tipados; capturas e links reutilizados de `app/data/home.ts`.
+- `app/data/legal.ts`: documentos operacionais preliminares.
+- `app/components/`: navegação, rodapé, composições editoriais e formulário.
+- `app/projetos/[slug]/`: páginas estáticas dos projetos.
+- `app/api/contato/`: validação e proteção do formulário.
+- `app/globals.css`: Mineral Intelligence, layouts responsivos e Precision Motion.
+- `scripts/verify-site.mjs`: verificação de navegador e do endpoint.
+- `scripts/prepare-brand.mjs`: favicon extraído do símbolo oficial fornecido.
 
-## Deploy on Vercel
+## Antes de publicar
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+O formulário ainda **não entrega mensagens** e informa isso explicitamente. WhatsApp e e-mail continuam disponíveis. Não há banco, rastreamento ou serviço de entrega configurado. Os documentos jurídicos estão marcados como preliminares e `noindex`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Veja o [registro de implementação e pendências de lançamento](docs/LANCAMENTO.md), incluindo os 17 requisitos, limitações das proteções, autorizações de portfólio e definições jurídicas necessárias. A publicação em produção exige autorização.

@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { legalDocuments, type LegalDocument } from "../data/legal";
+import { site } from "../data/site";
+import { PageIntro } from "./Editorial";
+
+export function LegalPage({ document }: { document: LegalDocument }) {
+  return <><PageIntro label="Transparência" title={document.title}><p>{document.description}</p></PageIntro><div className="shell legal-layout"><aside className="legal-aside"><p>Versão de desenvolvimento<br />Revisão: 22 de outubro de 2026</p><nav aria-label="Documentos de transparência">{Object.values(legalDocuments).map((item) => <Link key={item.path} href={item.path} aria-current={item.path === document.path ? "page" : undefined}>{item.title.replace(/\.$/, "")}</Link>)}</nav></aside><div className="legal-content"><div className="legal-notice"><p>{document.notice}</p></div>{document.sections.map((section) => <section key={section.title}><h2>{section.title}</h2>{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</section>)}<section><h2>Contato</h2><p>Para questões sobre estas informações, escreva para <a href={`mailto:${site.email}`}>{site.email}</a>.</p></section>{document.path === "/privacidade" || document.path === "/cookies" ? <section><h2>Referências oficiais</h2><p><a href="https://www.gov.br/anpd/pt-br/assuntos/titular-de-dados-1/direito-dos-titulares" target="_blank" rel="noopener noreferrer">Direitos dos titulares — ANPD</a><br /><a href="https://www.gov.br/anpd/pt-br/centrais-de-conteudo/materiais-educativos-e-publicacoes/guia_orientativo_cookies_e_protecao_de_dados_pessoais" target="_blank" rel="noopener noreferrer">Guia de cookies — ANPD</a></p></section> : null}</div></div></>;
+}
